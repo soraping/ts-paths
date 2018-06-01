@@ -1,5 +1,6 @@
-import * as program from "commander";
 import { join } from "path";
+import * as program from "commander";
+import { TscCmd } from "./tscCmd";
 const packAge = require("../package.json");
 
 program
@@ -9,8 +10,10 @@ program
   .option("-t, --tsconfigName <tsconfigName>")
   .description("rewirte tsc function")
   .action((projectPath, opt) => {
-    let tsconfigPath = join(projectPath, opt.tsconfigName);
-    console.log("tsconfigPath", tsconfigPath);
-    console.log("debug", opt.debug);
+    new TscCmd({
+      debug: opt.d,
+      tsconfigName: opt.t,
+      projectPath
+    });
   });
 program.parse(process.argv);

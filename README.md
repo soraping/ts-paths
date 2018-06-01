@@ -25,3 +25,7 @@ tsconfig.json 文件路径，相对于 build 的路径， 默认 `./tsconfig.jso
 * -d
 
 是否启用 debug，模式，控制台打印日志文件，默认 false
+
+> tsc.ignore 文件
+
+类似.gitignore 文件，添加忽略文件
