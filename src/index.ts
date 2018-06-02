@@ -6,14 +6,16 @@ const packAge = require("../package.json");
 program
   .version(packAge.version)
   .command("build <projectPath>")
-  .option("-d, --debug")
-  .option("-t, --tsconfigName <tsconfigName>")
   .description("rewirte tsc function")
+  .option("-d, --debug")
+  .option("-t, --tsconfigName [tsconfigName]")
   .action((projectPath, opt) => {
     new TscCmd({
-      debug: opt.d,
-      tsconfigName: opt.t,
+      debug: opt.debug
+    }).build({
+      tsconfigName: opt.tsconfigName,
       projectPath
     });
   });
+
 program.parse(process.argv);
