@@ -1,15 +1,16 @@
 {
-  "name": "re-tsc",
+  "name": "ts-paths",
   "version": "0.0.1",
-  "description": "rewriting tsc and add some costom function",
+  "description": "transform tsconfig.json paths",
   "main": "re-tsc",
   "scripts": {
     "clean": "rm -rf lib",
     "build": "yarn clean && npx tsc",
+    "dev": "cd .. && cd lenneth && node ../ts-paths/lib build ./ -t tsconfig.json -d",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "re-tsc": "re-tsc"
+    "ts-paths": "index"
   },
   "license": "MIT",
   "devDependencies": {
@@ -20,7 +21,13 @@
     "@types/shelljs": "^0.8.0",
     "typescript": "^2.9.1"
   },
-  "keywords": ["typescript", "node", "paths", "tsc", "tsc paths"],
+  "keywords": [
+    "typescript",
+    "node",
+    "paths",
+    "tsc",
+    "tsc paths"
+  ],
   "dependencies": {
     "chalk": "^2.4.1",
     "commander": "^2.15.1",
@@ -31,12 +38,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/soraping/re-tsc.git"
+    "url": "git+https://github.com/soraping/ts-paths.git"
   },
   "bugs": {
-    "url": "https://github.com/soraping/re-tsc/issues"
+    "url": "https://github.com/soraping/ts-paths/issues"
   },
-  "homepage": "https://github.com/soraping/re-tsc#readme",
+  "homepage": "https://github.com/soraping/ts-paths#readme",
   "engines": {
     "node": ">=8.0.0"
   },

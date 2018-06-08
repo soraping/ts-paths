@@ -1,4 +1,4 @@
-import { resolve } from "path";
+import { resolve, join } from "path";
 import { IBase, ITsc } from "./interfaces";
 import { Logger } from "./logger";
 import { Value, Autowired } from "./decorator";
@@ -12,9 +12,12 @@ export class TscCmd {
 
   build(opt: ITsc = {}) {
     const tsconfigName = opt.tsconfigName || this._tsconfigName;
-    const projectPath = opt.projectPath || this._projectPath;
+    const projectPath = resolve(
+      process.cwd(),
+      opt.projectPath || this._projectPath
+    );
     // tsconfig文件路径
-    const tsconfigPath = resolve(projectPath, tsconfigName);
+    const tsconfigPath = join(projectPath, tsconfigName);
     this.logger.info(`编译文件夹相对路径 => ${projectPath}`);
     this.logger.info(`tsconfig.json 文件路径 => ${tsconfigPath}`);
   }
