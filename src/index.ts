@@ -6,7 +6,7 @@ const packAge = require("../package.json");
 program
   .version(packAge.version)
   .command("build <projectPath>")
-  .description("rewirte tsc function")
+  .description("transform tsconfig.json paths")
   .option("-d, --debug")
   .option("-t, --tsconfigName [tsconfigName]")
   .action((projectPath, opt) => {

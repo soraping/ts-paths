@@ -32,7 +32,7 @@ export class Logger implements ILogger {
    */
   private _print(message: string, color: (msg: string) => string) {
     if (!this._debug) return;
-    process.stdout.write(color(`[re-tsc] - `));
+    process.stdout.write(color(`[ts-paths] - `));
     process.stdout.write(color(`${new Date(Date.now()).toLocaleString()}   `));
     process.stdout.write(color(message));
     process.stdout.write(`\n`);
