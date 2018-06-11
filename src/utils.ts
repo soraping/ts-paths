@@ -1,4 +1,4 @@
-import { readJson, existsSync, stat } from "fs-extra";
+import { readJson, existsSync, stat, emptyDir } from "fs-extra";
 
 /**
  * 是否为单文件

@@ -14,6 +14,7 @@ program
       debug: opt.debug
     }).build({
       tsconfigName: opt.tsconfigName,
+      rootDir: process.cwd(),
       projectPath
     });
   });

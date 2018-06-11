@@ -3,4 +3,6 @@ export interface ITsc {
   projectPath?: string;
   // tsconfig.json文件（项目编译文件目录）
   tsconfigName?: string;
+  // 工作根目录
+  rootDir?: string;
 }

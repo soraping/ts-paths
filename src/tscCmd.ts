@@ -1,4 +1,4 @@
-import { resolve, join } from "path";
+import { resolve, join, relative } from "path";
 import { IBase, ITsc } from "./interfaces";
 import { Logger } from "./logger";
 import { Value, Autowired } from "./decorator";
@@ -15,7 +15,7 @@ export class TscCmd {
   async build(opt: ITsc = {}) {
     const tsconfigName = opt.tsconfigName || this._tsconfigName;
     const projectPath = resolve(
-      process.cwd(),
+      opt.rootDir,
       opt.projectPath || this._projectPath
     );
     // tsconfig文件路径
@@ -35,12 +35,14 @@ export class TscCmd {
     let compilerOptions = await filesToJson(tsconfigPath, ["compilerOptions"]);
     let baseUrl = compilerOptions["baseUrl"];
     let pathsJson = compilerOptions["paths"];
+
+    // 编译操作
+
     // 获取paths映射表
     let pathsConfig = this._queryPathsConfig(baseUrl, pathsJson);
-    console.log(pathsConfig);
     // 输出目录
     let outDir = compilerOptions["outDir"];
-    // 扫输出目录，根据映射表替换文件
+    await this._transformPaths(opt.rootDir, outDir, pathsConfig);
   }
 
   /**
@@ -59,5 +61,9 @@ export class TscCmd {
   /**
    * 扫输出目录，根据映射表替换文件
    */
-  private async _transformPaths(): Promise<void> {}
+  private async _transformPaths(
+    rootDir: string,
+    outDir: string,
+    pathsConfig: object
+  ): Promise<void> {}
 }
