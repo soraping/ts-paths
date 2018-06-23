@@ -101,7 +101,7 @@ export class TscCmd {
     outDir: string,
     pathsConfig: object
   ): Promise<void> {
-    // console.log("pathsConfig", pathsConfig);
+    console.log("pathsConfig", pathsConfig);
     this.logger.info("开始替换文件字符");
     this.logger.info(`ts配置文件指向目录 => ${rootDir}`);
     this.logger.info(`ts配置文件输出目录 => ${outDir}`);
@@ -121,7 +121,10 @@ export class TscCmd {
             // 替换文件中的路径
             Object.keys(pathsConfig).forEach(targetPath => {
               if (file.indexOf(targetPath) != -1) {
-                let relative_path = relative(itemPath, pathsConfig[targetPath]);
+                let relative_path = relative(
+                  dirname(itemPath),
+                  pathsConfig[targetPath]
+                );
                 this.logger.info(`targetPath => ${targetPath}`);
                 this.logger.info(`relative_path => ${relative_path}`);
                 file = file.replace(targetPath, relative_path);
