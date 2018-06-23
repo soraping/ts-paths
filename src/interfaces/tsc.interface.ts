@@ -6,3 +6,10 @@ export interface ITsc {
   // 工作根目录
   rootDir?: string;
 }
+
+export interface ICompilerOptions {
+  rootDir: string;
+  baseUrl: string;
+  paths: object;
+  outDir: string;
+}

@@ -29,12 +29,12 @@ export async function isDirectory(path: string): Promise<boolean> {
  * @param path
  * @param fields
  */
-export async function filesToJson(
+export async function filesToJson<T>(
   path: string,
   fields?: string[]
-): Promise<object> {
+): Promise<T> {
   let filesJSON = await readJson(path);
-  return fieldsJson(filesJSON, fields);
+  return fieldsJson<T>(filesJSON, fields);
 }
 
 /**
@@ -42,7 +42,7 @@ export async function filesToJson(
  * @param data
  * @param fields
  */
-const fieldsJson = (data: object, fields: string[]): Promise<object> => {
+function fieldsJson<T>(data: T, fields: string[]): Promise<T> {
   let overData = data;
   const compose = i => {
     if (i == fields.length) {
@@ -57,4 +57,4 @@ const fieldsJson = (data: object, fields: string[]): Promise<object> => {
   return new Promise((resolve, reject) => {
     resolve(overData);
   });
-};
+}
