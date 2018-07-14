@@ -14,17 +14,34 @@ npx re-tsc build . -p tsconfig.dev.json -d
 
 > 参数解释
 
-* `build <path>`
+- `build <path>`
 
 工作目录，处理待编译路径，默认 `./`
 
-* -p
+- -p
 
 tsconfig.json 文件路径，相对于 build 的路径， 默认 `./tsconfig.json`
 
-* -d
+- -d
 
 是否启用 debug，模式，控制台打印日志文件，默认 false
+
+- -l
+
+```javascript
+enum LevelMap {
+  ERROR = 0,
+  WARN = 1,
+  INFO = 2,
+  DEBUG = 3
+}
+```
+
+> 案例
+
+```bash
+ts-paths build ./ -t tsconfig.json -d -l 2
+```
 
 > tsc.ignore 文件
 

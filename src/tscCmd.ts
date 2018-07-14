@@ -12,6 +12,7 @@ export class TscCmd {
   @Value("./") private _projectPath: string;
   constructor(props: IBase) {
     this.logger.debug = props.debug;
+    this.logger.level = props.level || 2;
   }
 
   async build(opt: ITsc = {}) {

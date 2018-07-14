@@ -1,12 +1,12 @@
 {
   "name": "ts-paths",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "transform tsconfig.json paths",
   "main": "re-tsc",
   "scripts": {
     "clean": "rm -rf lib",
     "build": "yarn clean && npx tsc",
-    "dev": "cd .. && cd lenneth && node ../ts-paths/lib build ./ -t tsconfig.json -d",
+    "dev": "cd .. && cd lenneth && node ../ts-paths/lib build ./ -t tsconfig.json -d -l 2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
