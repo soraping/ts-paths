@@ -1,4 +1,4 @@
-# re-tsc
+# ts-paths
 
 对 tsc 命令做了一些扩展
 
@@ -7,9 +7,9 @@ tsconfig.json 中 paths 参数对文件路径做了映射，但是编译时并�
 > 使用
 
 ```bash
-yarn add --dev re-tsc
+yarn add --dev ts-paths
 
-npx re-tsc build . -p tsconfig.dev.json -d
+npx ts-paths build ./ -t tsconfig.json -d -l 2
 ```
 
 > 参数解释
@@ -35,12 +35,6 @@ enum LevelMap {
   INFO = 2,
   DEBUG = 3
 }
-```
-
-> 案例
-
-```bash
-ts-paths build ./ -t tsconfig.json -d -l 2
 ```
 
 > tsc.ignore 文件

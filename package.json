@@ -1,8 +1,8 @@
 {
   "name": "ts-paths",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "transform tsconfig.json paths",
-  "main": "re-tsc",
+  "main": "ts-paths",
   "scripts": {
     "clean": "rm -rf lib",
     "build": "yarn clean && npx tsc",
